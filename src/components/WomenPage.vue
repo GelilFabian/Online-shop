@@ -1,7 +1,7 @@
 <template>
   <HeroBanner />
   <BrandSlider />
-  <ProductList />
+  <ProductList :category="'femei'" />
 </template>
 <script>
 import HeroBanner from "@/components/HeroBanner.vue";

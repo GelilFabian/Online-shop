@@ -12,18 +12,18 @@
         class="mySwiper"
         :breakpoints="{
         1600: { slidesPerView: 4, slidesPerGroup: 4 },
-        1200: { slidesPerView: 3, slidesPerGroup: 3},
+        1200: { slidesPerView: 3, slidesPerGroup: 3 },
         800: { slidesPerView: 2, slidesPerGroup: 2 },
         480: { slidesPerView: 1, slidesPerGroup: 1 },
-        0:{ slidesPerView: 1, slidesPerGroup: 1},
+        0: { slidesPerView: 1, slidesPerGroup: 1 }
       }"
     >
-      <swiper-slide v-for="product in products" :key="product.id">
+      <swiper-slide v-for="product in filteredProducts" :key="product.id">
         <div class="product-card">
-          <img :src="`/src/assets/products/${product.image}`" :alt="product.name" />
+          <img :src="`/src/assets/products/${category}/${product.image}`" :alt="product.name" />
           <div class="product-details">
             <h3>{{ product.name }}</h3>
-            <p class="price">{{ product.price + " Lei" }}</p>
+            <p class="price">{{ product.price }} Lei</p>
             <p class="original-price">Preț normal: {{ product.originalPrice }} Lei</p>
             <p class="description">{{ product.description }}</p>
           </div>
@@ -147,17 +147,12 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { products } from '@/Products.js'
+import {computed} from "vue";
 
 const modules = [Autoplay, Navigation];
-
-const products = [
-  {id: 1, name: 'BOSS bocanci de piele Nebular', price: 879.90, originalPrice: 1299.90, image: 'bocanci-boss.png', description: 'Cel mai mic preț din ultimele 30 de zile înainte de reducere: 979.90 LEI', isFavorite: false},
-  {id: 2, name: "HUGO pantofi Urian", price: 769.90, originalPrice: 989.90, image: 'bocanci-hugo.png', description: 'Cel mai mic preț de la lansare: 890.90 LEI', isFavorite: false},
-  {id: 3, name: "Karl Lagerfeld sneakers din piele KAPRI MENS", price: 669.90, originalPrice: 1009.90, image: 'sneaker-kl.png', description: 'Cel mai mic preț de la lansare: 719.90 LEI', isFavorite: false},
-  {id: 4, name: "Calvin Klein Jeans ghete chelsea de piele EVA BOOT MID CHELSEA ICONIC DR", price: 599.90, originalPrice: 849.90, image: 'ghete-ck.png', description: 'Cel mai mic preț de la lansare: 629.90 LEI', isFavorite: false},
-  {id: 5, name: 'BOSS bocanci de piele Nebular', price: 479.90, originalPrice: 1299.90, image: 'bocanci-boss.png', description: 'Cel mai mic preț din ultimele 30 de zile înainte de reducere: 979.90 LEI', isFavorite: false},
-  {id: 6, name: "HUGO pantofi Urian", price: 769.90, originalPrice: 989.90, image: 'bocanci-hugo.png', description: 'Cel mai mic preț de la lansare: 890.90 LEI', isFavorite: false},
-  {id: 7, name: "Karl Lagerfeld sneakers din piele KAPRI MENS", price: 669.90, originalPrice: 1009.90, image: 'sneaker-kl.png', description: 'Cel mai mic preț de la lansare: 719.90 LEI', isFavorite: false},
-  {id: 8, name: "Calvin Klein Jeans ghete chelsea de piele EVA BOOT MID CHELSEA ICONIC DR", price: 599.90, originalPrice: 849.90, image: 'ghete-ck.png', description: 'Cel mai mic preț de la lansare: 629.90 LEI', isFavorite: false},
-];
+const props = defineProps(['category']);
+const filteredProducts = computed(() => {
+  return products.filter(product => product.category === props.category);
+});
 </script>
