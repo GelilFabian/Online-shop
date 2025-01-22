@@ -8,15 +8,11 @@
   <Footer />
 </template>
 
-<script>
+<script setup>
 import Header from "@/components/Nav.vue";
 import Banner from "@/components/Anouncement.vue";
 import Footer from "@/components/Footer.vue";
 import Newsletter from "@/components/Newsletter.vue";
-
-export default {
-  components: {Newsletter, Footer, Banner, Header}
-}
 </script>
 
 <style>

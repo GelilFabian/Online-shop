@@ -101,19 +101,11 @@ span {
 }
 </style>
 
-<script>
+<script setup>
 import SubHeader from "@/components/SubNav.vue";
-import {Heart, ShoppingBag, User} from "lucide-vue-next";
+import { Heart, ShoppingBag, User } from "lucide-vue-next";
 import { useRoute } from 'vue-router';
 
-export default {
-  components: {Heart, User, ShoppingBag, SubHeader},
-  setup() {
-    const route = useRoute();
-    const isActive = (path) => route.path === path;
-    return {
-      isActive,
-    };
-  },
-};
+const route = useRoute();
+const isActive = (path) => route.path === path;
 </script>

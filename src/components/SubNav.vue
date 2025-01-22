@@ -1,5 +1,5 @@
 <template>
-  <nav class="subnav" v-if="activeRoute === '/barbati' || activeRoute === '/femei' || activeRoute === '/copii'">
+  <nav class="subnav" v-if="isCategoryPage">
     <ul>
       <li><router-link to="/">Noutăți</router-link></li>
       <li><router-link to="/">Winter Sale</router-link></li>
@@ -8,7 +8,12 @@
     </ul>
     <ul>
       <li class="search-bar">
-        <input type="text" placeholder="Caută produse..." v-model="searchQuery" @keyup.enter="performSearch" />
+        <input
+            type="text"
+            placeholder="Caută produse..."
+            v-model="searchQuery"
+            @keyup.enter="performSearch"
+        />
         <button @click="performSearch">
           <img src="@/assets/images/search-icon.png" alt="Search Icon" />
         </button>
@@ -19,7 +24,12 @@
     <ul></ul>
     <ul>
       <li class="search-bar">
-        <input type="text" placeholder="Caută produse..." v-model="searchQuery" @keyup.enter="performSearch" />
+        <input
+            type="text"
+            placeholder="Caută produse..."
+            v-model="searchQuery"
+            @keyup.enter="performSearch"
+        />
         <button @click="performSearch">
           <img src="@/assets/images/search-icon.png" alt="Search Icon" />
         </button>
@@ -28,27 +38,20 @@
   </nav>
 </template>
 
-<script>
-import { useRoute } from 'vue-router';
-import { ref, watch } from 'vue';
+<script setup>
+import { useRoute } from "vue-router";
+import { computed, ref } from "vue";
 
-export default {
-  setup() {
-    const route = useRoute();
-    const activeRoute = ref(route.path);
-    const searchQuery = ref('');
+const route = useRoute();
+const searchQuery = ref("");
 
-    watch(route, (newRoute) => {
-      activeRoute.value = newRoute.path;
-    });
+const isCategoryPage = computed(() =>
+    ["/barbati", "/femei", "/copii"].includes(route.path)
+);
 
-    const performSearch = () => {
-      console.log(`Searching for: ${searchQuery.value}`);
-      // Implement the search logic here
-    };
-
-    return { activeRoute, searchQuery, performSearch };
-  },
+const performSearch = () => {
+  console.log(`Searching for: ${searchQuery.value}`);
+  // Implement the search logic here
 };
 </script>
 

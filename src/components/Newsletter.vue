@@ -93,14 +93,14 @@ import { ref } from 'vue'
 
 const email = ref('')
 
-const handleSubmit = async () => {
-  try {
-    console.log('Subscribing email:', email.value)
-    email.value = ''
-  } catch (error) {
-    console.error('Subscription error:', error)
+const subscribe = () => {
+  if (email.value.trim() === "") {
+    alert("Vă rugăm să introduceți o adresă de email validă!");
+    return;
   }
-}
+  alert(`Mulțumim că v-ați abonat! Email-ul dvs.: ${email.value}`);
+  email.value = "";
+};
 </script>
 
 <style scoped>

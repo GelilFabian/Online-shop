@@ -2,11 +2,8 @@
   <HeroBanner />
   <HomeCategories />
 </template>
-<script>
+
+<script setup>
 import HeroBanner from "@/components/HeroBanner.vue";
 import HomeCategories from "@/components/HomeCategories.vue";
-
-export default {
-  components: {HomeCategories, HeroBanner},
-};
 </script>
