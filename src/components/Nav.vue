@@ -17,7 +17,6 @@
         <li><router-link to="/"><ShoppingBag class="w-6 h-6" /></router-link></li>
       </ul>
     </nav>
-    <SubHeader />
   </header>
 </template>
 
@@ -102,7 +101,6 @@ span {
 </style>
 
 <script setup>
-import SubHeader from "@/components/SubNav.vue";
 import { Heart, ShoppingBag, User } from "lucide-vue-next";
 import { useRoute } from 'vue-router';
 

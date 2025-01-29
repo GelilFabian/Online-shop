@@ -1,8 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import homePage from '/src/components/homePage.vue'
-import MenPage from "@/components/MenPage.vue";
-import WomenPage from "@/components/WomenPage.vue";
-import KidsPage from "@/components/KidsPage.vue";
+import homePage from '/src/views/homePage.vue'
+import CategoryPage from '/src/views/CategoryPage.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -12,20 +10,12 @@ const router = createRouter({
       component: homePage
     },
     {
-      path: '/barbati',
-      name: 'MenPage',
-      component: MenPage
+      path: "/:category", // Parametru dinamic pentru gen
+      name: "CategoryPage",
+      component: CategoryPage,
+      props: true,
     },
-    {
-      path: '/femei',
-      name: 'WomenPage',
-      component: WomenPage
-    },
-    {
-      path: '/copii',
-      name: 'KidsPage',
-      component: KidsPage
-    }
+
   ],
 })
 

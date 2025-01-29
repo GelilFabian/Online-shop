@@ -1,6 +1,6 @@
 <template>
   <div class="product-list">
-    <h1>Special Offer!</h1>
+    <h1>Winter Sale!</h1>
     <swiper
         :modules="modules"
         :slides-per-view="4"
@@ -42,7 +42,9 @@
 
 .product-list h1 {
   text-align:left;
-  color:red;
+  text-transform: uppercase;
+  color:black;
+  font-weight: 700;
   margin-bottom:50px;
 }
 

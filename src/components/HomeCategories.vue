@@ -5,7 +5,9 @@
         <div class="text">
           <h1>Bărbați</h1>
           <p>Căutați pantofi de bărbați</p>
-          <router-link to="/barbati"><button class="hero-button">Vezi</button></router-link>
+          <router-link :to="{ path: '/barbati' }">
+            <button class="hero-button">Vezi</button>
+          </router-link>
         </div>
         <div class="image">
           <img src="@/assets/images/men.jpg" alt="Barbati">
@@ -20,16 +22,20 @@
         <div class="text">
           <h1>Colecția de Femei</h1>
           <p>Căutați pantofi de femei</p>
-          <router-link to="/femei"><button class="hero-button">Vezi</button></router-link>
+          <router-link :to="{ path: '/femei' }">
+            <button class="hero-button">Vezi</button>
+          </router-link>
         </div>
       </div>
     </div>
-    <div class="section men">
+    <div class="section kids">
       <div class="content">
         <div class="text">
           <h1>Copii</h1>
           <p>Căutați pantofi de copii</p>
-          <router-link to="/copii"><button class="hero-button">Vezi</button></router-link>
+          <router-link :to="{ path: '/copii' }">
+            <button class="hero-button">Vezi</button>
+          </router-link>
         </div>
         <div class="image">
           <img src="@/assets/images/kids.jpg" alt="Copii">
