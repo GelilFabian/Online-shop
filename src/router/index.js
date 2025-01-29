@@ -10,12 +10,11 @@ const router = createRouter({
       component: homePage
     },
     {
-      path: "/:category", // Parametru dinamic pentru gen
-      name: "CategoryPage",
+      path: '/:category(barbati|femei|copii)', // Constrângem categoria la valori specifice
+      name: 'CategoryPage',
       component: CategoryPage,
-      props: true,
+      props: true, // Transmite `category` ca prop
     },
-
   ],
 })
 
