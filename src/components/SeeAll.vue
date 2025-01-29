@@ -1,26 +1,29 @@
 <script setup>
 import { useRoute, useRouter } from "vue-router";
+import men from "@/assets/images/seeAllMen.png";
+import women from "@/assets/images/seeAllWomen.png";
+import kids from "@/assets/images/seeAllKids.png";
 
 // Obținem informațiile despre rută
 const route = useRoute();
 const router = useRouter();
 const category = route.params.category; // Extragem categoria din URL
 
-// Mapăm conținutul pentru fiecare categorie, inclusiv imaginile specifice
+// Mapăm conținutul pentru fiecare categorie
 const categoryData = {
   barbati: {
     title: "Colecția pentru Bărbați",
-    image: import("src/assets/images/seeAllMen.png"),
+    image: men,
     buttonText: "Vezi colecția pentru Bărbați",
   },
   femei: {
     title: "Colecția pentru Femei",
-    image: import("src/assets/images/seeAllWomen.png"),
+    image: women,
     buttonText: "Vezi colecția pentru Femei",
   },
   copii: {
     title: "Colecția pentru Copii",
-    image: import("src/assets/images/seeAllKids.png"),
+    image: kids,
     buttonText: "Vezi colecția pentru Copii",
   },
 };
@@ -28,7 +31,7 @@ const categoryData = {
 // Fallback în cazul în care categoria nu este validă
 const categoryContent = categoryData[category] || {
   title: "Colecție necunoscută",
-  image: () => import("@/assets/images/seeAllMen.png"),
+  image: "@/assets/images/default.jpg",
   buttonText: "Vezi colecția",
 };
 
@@ -49,7 +52,7 @@ function handleSeeAll() {
           </button>
         </div>
         <div class="image">
-          <img v-if="categoryContent.image" :src="categoryContent.image" :alt="categoryContent.title" />
+          <img :src=categoryContent.image :alt=categoryContent.title />
         </div>
       </div>
     </div>
@@ -92,6 +95,5 @@ function handleSeeAll() {
 .image img {
   max-width: 100%;
   height: auto;
-  border-radius: 8px;
 }
 </style>
