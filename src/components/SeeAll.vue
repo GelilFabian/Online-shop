@@ -1,13 +1,15 @@
 <script setup>
+import { computed } from 'vue';
 import { useRoute, useRouter } from "vue-router";
 import men from "@/assets/images/seeAllMen.png";
 import women from "@/assets/images/seeAllWomen.png";
 import kids from "@/assets/images/seeAllKids.png";
 
-// Obținem informațiile despre rută
 const route = useRoute();
 const router = useRouter();
-const category = route.params.category; // Extragem categoria din URL
+
+// Facem category reactiv folosind computed
+const category = computed(() => route.params.category);
 
 // Mapăm conținutul pentru fiecare categorie
 const categoryData = {
@@ -28,16 +30,18 @@ const categoryData = {
   },
 };
 
-// Fallback în cazul în care categoria nu este validă
-const categoryContent = categoryData[category] || {
-  title: "Colecție necunoscută",
-  image: "@/assets/images/default.jpg",
-  buttonText: "Vezi colecția",
-};
+// Facem și categoryContent reactiv
+const categoryContent = computed(() => 
+  categoryData[category.value] || {
+    title: "Colecție necunoscută",
+    image: "@/assets/images/default.jpg",
+    buttonText: "Vezi colecția",
+  }
+);
 
-// Navigare programatică la categoria selectată
+// Actualizăm funcția pentru a folosi valoarea computed
 function handleSeeAll() {
-  router.push(`/${category}`);
+  router.push({ path: "/ShowProducts", query: { category: category.value } });
 }
 </script>
 
@@ -52,7 +56,7 @@ function handleSeeAll() {
           </button>
         </div>
         <div class="image">
-          <img :src=categoryContent.image :alt=categoryContent.title />
+          <img :src="categoryContent.image" :alt="categoryContent.title" />
         </div>
       </div>
     </div>

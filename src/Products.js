@@ -18,5 +18,10 @@ export const products = [
     {id: 15, name: 'Moon Boot cizme de iarna MB EVX LIGHT NYLON', price: 699.90, originalPrice: 869.90, image: 'moonboot.png', description: 'Cel mai mic preț din ultimele 30 de zile înainte de reducere: 869.90 LEI', isFavorite: false, category: 'femei'},
     {id: 16, name: "Gant botine din piele intoarsa Wintly", price: 599.90, originalPrice: 829.90, image: 'botine-gant.png', description: 'Cel mai mic preț de la lansare: 669.90 LEI', isFavorite: false, category: 'femei'},
     //copii
-
+    {id: 17, name: 'Adidas ghete de iarnă TERREX SNOW', price: 429.90, originalPrice: 579.90, image: 'adidas.png', description: 'Cel mai mic preț din ultimele 30 de zile înainte de reducere: 459.90 LEI', isFavorite: false, category: 'copii'},
+    {id: 18, name: "Puma cizme de iarnă SNOW FUN", price: 389.90, originalPrice: 529.90, image: 'puma.png', description: 'Cel mai mic preț de la lansare: 419.90 LEI', isFavorite: false, category: 'copii'},
+    {id: 19, name: 'Columbia botine impermeabile WINTER FUN', price: 499.90, originalPrice: 649.90, image: 'columbia.png', description: 'Cel mai mic preț din ultimele 30 de zile înainte de reducere: 519.90 LEI', isFavorite: false, category: 'copii'},
+    {id: 20, name: "Geox ghete de piele RESPIRA KIDS", price: 459.90, originalPrice: 609.90, image: 'geox.png', description: 'Cel mai mic preț de la lansare: 489.90 LEI', isFavorite: false, category: 'copii'},
+    {id: 21, name: 'Reebok ghete sport OUTDOOR ACTIVE', price: 379.90, originalPrice: 499.90, image: 'reebok.png', description: 'Cel mai mic preț din ultimele 30 de zile înainte de reducere: 399.90 LEI', isFavorite: false, category: 'copii'},
+    {id: 23, name: 'Skechers cizme termoizolate SNOW GLOW', price: 439.90, originalPrice: 589.90, image: 'skechers.png', description: 'Cel mai mic preț din ultimele 30 de zile înainte de reducere: 459.90 LEI', isFavorite: false, category: 'copii'},
 ];

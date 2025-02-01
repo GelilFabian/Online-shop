@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import homePage from '/src/views/homePage.vue'
 import CategoryPage from '/src/views/CategoryPage.vue'
+import AllProducts from '@/views/ShowProducts.vue'
+import ShowProducts from '@/views/ShowProducts.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -15,6 +17,11 @@ const router = createRouter({
       component: CategoryPage,
       props: true, // Transmite `category` ca prop
     },
+    {
+      path: '/showproducts',
+      name: 'ShowProducts',
+      component: ShowProducts,
+    }
   ],
 })
 
