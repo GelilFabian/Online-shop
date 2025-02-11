@@ -1,14 +1,13 @@
 <script setup>
-// Script rămâne neschimbat
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
 
-const categories = [
+const types = [
   { name: "Balerini", slug: "balerini" },
   { name: "Botine", slug: "botine" },
-  { name: "Cizme de cauciuc", slug: "cizme-cauciuc" },
+  { name: "Cizme de cauciuc", slug: "cizme" },
   { name: "Espadrile", slug: "espadrile" },
   { name: "Mocasini și pantofi", slug: "mocasini-pantofi" },
   { name: "Outdoor", slug: "outdoor" },
@@ -16,13 +15,13 @@ const categories = [
   { name: "Papuci de casă", slug: "papuci-casa" },
   { name: "Papuci și sandale", slug: "papuci-sandale" },
   { name: "Pentru iarnă", slug: "iarna" },
-  { name: "Sneakers", slug: "sneakers" },
+  { name: "Sneakers", slug: "sneaker" },
   { name: "Pantofi sport", slug: "pantofi-sport" },
   { name: "Teniși", slug: "tenisi" },
 ];
 
-const selectCategory = (category) => {
-  router.push({ path: "/showproducts", query: { category } });
+const selectType = (type) => {
+  window.location.href = `/showproducts?type=${type}`;
 };
 </script>
 
@@ -31,8 +30,8 @@ const selectCategory = (category) => {
     <div class="sidebar">
       <h2>Încălțăminte</h2>
       <ul>
-        <li v-for="category in categories" :key="category.slug" @click="selectCategory(category.slug)">
-          {{ category.name }}
+        <li v-for="type in types" :key="type.slug" @click="selectType(type.slug)">
+          {{ type.name }}
         </li>
       </ul>
     </div>

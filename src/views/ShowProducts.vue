@@ -1,7 +1,6 @@
 <script setup>
 import AllProducts from '@/components/AllProducts.vue';
 import SidebarMenu from '@/components/SidebarMenu.vue';
-
 </script>
 
 <template>

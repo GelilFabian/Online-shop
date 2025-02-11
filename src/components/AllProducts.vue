@@ -8,6 +8,7 @@ const route = useRoute();
 // Referințe pentru toate filtrele
 const selectedPopularity = ref("all");
 const selectedCategory = ref(route.query.category || "all");
+const selectedType = ref(route.query.type || "all");
 const selectedSize = ref("all");
 const selectedBrand = ref("all");
 const selectedColor = ref("all");
@@ -21,6 +22,7 @@ const getUniqueValues = (field) => {
 
 // Computed properties pentru opțiunile filtrelor
 const categories = computed(() => getUniqueValues("category"));
+const types = computed(() => getUniqueValues("type"));
 const sizes = computed(() => getUniqueValues("size"));
 const brands = computed(() => getUniqueValues("brand"));
 const colors = computed(() => getUniqueValues("color"));
@@ -32,6 +34,7 @@ const popularityOptions = computed(() => ["all", "most_popular", "newest"]);
 const filteredProducts = computed(() => {
   return products.filter(product => {
     return (selectedCategory.value === "all" || product.category === selectedCategory.value) &&
+           (selectedType.value === "all" || product.type === selectedType.value) &&
            (selectedSize.value === "all" || product.size === selectedSize.value) &&
            (selectedBrand.value === "all" || product.brand === selectedBrand.value) &&
            (selectedColor.value === "all" || product.color === selectedColor.value) &&
@@ -48,6 +51,9 @@ const updateFilter = (filterType, value) => {
       break;
     case 'category':
       selectedCategory.value = value;
+      break;
+    case 'type':
+      selectedType.value = value;
       break;
     case 'size':
       selectedSize.value = value;
@@ -90,6 +96,16 @@ const updateFilter = (filterType, value) => {
           <option value="all">Categorie</option>
           <option v-for="category in categories" :key="category" :value="category">
             {{ category }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Type -->
+      <div class="filter-group">
+        <select v-model="selectedType" @change="updateFilter('type', selectedType)">
+          <option value="all">Tip de incaltaminte</option>
+          <option v-for="type in types" :key="type" :value="type">
+            {{ type }}
           </option>
         </select>
       </div>
@@ -147,11 +163,16 @@ const updateFilter = (filterType, value) => {
 
     <!-- Lista de produse -->
     <div v-if="filteredProducts.length" class="product-list">
-      <div v-for="product in filteredProducts" :key="product.id" class="product">
+      <router-link 
+        v-for="product in filteredProducts" 
+        :key="product.id" 
+        :to="`/product/${product.id}`" 
+        class="product"
+      >
         <img :src="`/src/assets/products/${product.category}/${product.image}`" :alt="product.name" />
         <h2>{{ product.name }}</h2>
         <p>{{ product.price }} LEI</p>
-      </div>
+      </router-link>
     </div>
 
     <p v-else>Nicio produs disponibil.</p>
@@ -195,6 +216,15 @@ const updateFilter = (filterType, value) => {
   border: 1px solid #eee;
   padding: 10px;
   border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 .product img {

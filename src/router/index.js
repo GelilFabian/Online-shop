@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import homePage from '/src/views/homePage.vue'
 import CategoryPage from '/src/views/CategoryPage.vue'
-import AllProducts from '@/views/ShowProducts.vue'
 import ShowProducts from '@/views/ShowProducts.vue'
+import ProductDetails from '@/views/ProductDetails.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -21,6 +21,12 @@ const router = createRouter({
       path: '/showproducts',
       name: 'ShowProducts',
       component: ShowProducts,
+    },
+    {
+      path: '/product/:id',
+      name: 'ProductDetails',
+      component: ProductDetails,
+      props: true
     }
   ],
 })
